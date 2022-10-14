@@ -1,8 +1,6 @@
 # Raven Node.JS library
 
-![npm shield](https://img.shields.io/npm/v/@fern-api/raven)
-
-
+[![npm shield](https://img.shields.io/npm/v/@fern-api/raven)](https://www.npmjs.com/package/@fern-api/raven)
 
 The Raven Node.JS library provides access to the Raven API from JavaScript/TypeScript.
 
