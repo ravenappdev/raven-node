@@ -5,6 +5,22 @@ __metadata:
   version: 6
   cacheKey: 8
 
+"@fern-api/raven@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "@fern-api/raven@workspace:."
+  dependencies:
+    "@types/node": 17.0.33
+    "@types/url-join": 4.0.1
+    axios: ^0.27.2
+    esbuild: 0.14.47
+    prettier: 2.7.1
+    typescript: 4.6.4
+    url-join: 4.0.1
+  peerDependencies:
+    axios: "*"
+  languageName: unknown
+  linkType: soft
+
 "@types/node@npm:17.0.33":
   version: 17.0.33
   resolution: "@types/node@npm:17.0.33"
@@ -308,22 +324,6 @@ __metadata:
   checksum: 55a4409182260866ab31284d929b3cb961e5fdb91fe0d2e099dac92eaecec890f36e524b4c19e6ceae839c99c6d7195817579cdffc8e2c80da0cb794463a748b
   languageName: node
   linkType: hard
-
-"raven@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "raven@workspace:."
-  dependencies:
-    "@types/node": 17.0.33
-    "@types/url-join": 4.0.1
-    axios: ^0.27.2
-    esbuild: 0.14.47
-    prettier: 2.7.1
-    typescript: 4.6.4
-    url-join: 4.0.1
-  peerDependencies:
-    axios: "*"
-  languageName: unknown
-  linkType: soft
 
 "typescript@npm:4.6.4":
   version: 4.6.4
