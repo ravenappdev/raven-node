@@ -8,7 +8,6 @@ export interface Device {
   id?: string;
   platform?: RavenApi.device.Platform;
   onesignalPlayerId?: string;
-  fcmToken?: string;
   xiaomiToken?: string;
   oppoToken?: string;
   vivoToken?: string;

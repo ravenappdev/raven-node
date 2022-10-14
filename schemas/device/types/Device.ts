@@ -10,7 +10,6 @@ export const Device: core.schemas.ObjectSchema<Device.Raw, RavenApi.device.Devic
   id: core.schemas.string().optional(),
   platform: core.schemas.lazy(() => schemas.device.Platform).optional(),
   onesignalPlayerId: core.schemas.property("onesignal_player_id", core.schemas.string().optional()),
-  fcmToken: core.schemas.property("fcm_token", core.schemas.string().optional()),
   xiaomiToken: core.schemas.property("xiaomi_token", core.schemas.string().optional()),
   oppoToken: core.schemas.property("oppo_token", core.schemas.string().optional()),
   vivoToken: core.schemas.property("vivo_token", core.schemas.string().optional()),
@@ -27,7 +26,6 @@ export declare namespace Device {
     id?: string | null;
     platform?: schemas.device.Platform.Raw | null;
     onesignal_player_id?: string | null;
-    fcm_token?: string | null;
     xiaomi_token?: string | null;
     oppo_token?: string | null;
     vivo_token?: string | null;
