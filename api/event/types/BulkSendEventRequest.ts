@@ -6,5 +6,6 @@ import { RavenApi } from "../../..";
 
 export interface BulkSendEventRequest {
   event: string;
+  /** List of events */
   batch: RavenApi.event.BatchEvent[];
 }
