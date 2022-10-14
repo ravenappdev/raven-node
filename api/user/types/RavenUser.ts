@@ -7,7 +7,7 @@ import { RavenApi } from "../../..";
 export interface RavenUser {
   /**
    * Your user identifier.
-   *   if user_id already exists, user properties will be updated else a new user will be created
+   * If user_id already exists, user properties will be updated else a new user will be created
    *
    */
   userId: RavenApi.ids.UserId;
