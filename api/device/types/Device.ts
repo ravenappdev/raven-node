@@ -12,6 +12,8 @@ export interface Device {
   oppoToken?: string;
   vivoToken?: string;
   huaweiToken?: string;
+  /** firebase device token */
+  fcmToken?: string;
   /** user id affiliated with device */
   ravenId?: string;
   deviceSid?: RavenApi.ids.DeviceId;

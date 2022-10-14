@@ -14,6 +14,7 @@ export const Device: core.schemas.ObjectSchema<Device.Raw, RavenApi.device.Devic
   oppoToken: core.schemas.property("oppo_token", core.schemas.string().optional()),
   vivoToken: core.schemas.property("vivo_token", core.schemas.string().optional()),
   huaweiToken: core.schemas.string().optional(),
+  fcmToken: core.schemas.property("fcm_token", core.schemas.string().optional()),
   ravenId: core.schemas.property("raven_id", core.schemas.string().optional()),
   deviceSid: core.schemas.property("device_sid", core.schemas.lazy(() => schemas.ids.DeviceId).optional()),
   notificationsDisabled: core.schemas.property("notifications_disabled", core.schemas.boolean().optional()),
@@ -30,6 +31,7 @@ export declare namespace Device {
     oppo_token?: string | null;
     vivo_token?: string | null;
     huaweiToken?: string | null;
+    fcm_token?: string | null;
     raven_id?: string | null;
     device_sid?: schemas.ids.DeviceId.Raw | null;
     notifications_disabled?: boolean | null;
