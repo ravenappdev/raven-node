@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup node
+      - name: Set up node
         uses: actions/setup-node@v2
 
       - name: compile
@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup node
+      - name: Set up node
         uses: actions/setup-node@v2
 
       - run: yarn install

@@ -2,6 +2,11 @@
 
 The Raven Node library provides access to the Raven API from JavaScript/TypeScript.
 
+
+## Documentation
+
+API documentation is available at https://docs.ravenapp.dev/.
+
 ## Usage
 
 ```typescript
@@ -21,30 +26,33 @@ const createUserResponse = await raven.user.createOrUpdate({
   },
 });
 
-if (!createUserResponse.ok) {
-  throw new Error(`Failed to create user: ${createUserResponse.error}`);
+if (createUserResponse.ok) {
+  console.log(createUserResponse.body);
+} else {
+  console.error("Failed to create user", createUserResponse.error);
 }
-
-console.log(createUserResponse.body);
 ```
 
-## Sample App
+## Sample app
 
-Checkout the [sample app](.sample-app/app.ts) which consumes this SDK!
+Check out the [sample app](.sample-app/app.ts) which consumes this SDK!
 
-```
+```bash
+export RAVEN_TOKEN=...
+export RAVEN_APP_ID=...
+
+yarn install
+
 cd .sample-app
 yarn install
 yarn start
 ```
 
-\_Note: The Sample App requires you setting RAVEN_TOKEN and RAVEN_APP_ID
+## Examples
 
-## SDK Examples
+Below are a few examples of how to use the SDK to hit different endpoints. Check out our [API Reference](https://docs.ravenapp.dev/) to see all of our endpoints.
 
-Below are a few examples of how to use the SDK to hit different endpoints. Checkout our [API Reference](https://docs.ravenapp.dev/) to see all of our endpoints.
-
-### Add Device
+### Add device
 
 ```typescript
 const addDeviceResponse = await raven.device.add({
@@ -57,14 +65,14 @@ const addDeviceResponse = await raven.device.add({
   },
 });
 
-if (!addDeviceResponse.ok) {
-  throw new Error(`addDevice failed with ${addDeviceResponse.error}`);
+if (addDeviceResponse.ok) {
+  console.log(addDeviceResponse.body);
+} else {
+  console.error("Failed to add device", addDeviceResponse.error);
 }
-
-console.log(addDeviceResponse.body);
 ```
 
-### Send Event
+### Send event
 
 ```typescript
 const sendEventResponse = await raven.event.send({
@@ -83,11 +91,13 @@ const sendEventResponse = await raven.event.send({
   },
 });
 
-if (!sendEventResponse.ok) {
-  throw new Error(
-    `sendEvent failed with ${JSON.stringify(sendEventResponse.error)}`
-  );
+if (sendEventResponse.ok) {
+  console.log(`The id of the event is ${sendEventResponse.body.id}`);
+} else {
+  console.error("Failed to send event", sendEventResponse.error);
 }
-
-console.log(`The id of the event is ${sendEventResponse.body.id}`);
 ```
+
+## Questions? Feedback?
+
+Feel free to [leave an issue](https://github.com/fern-api/raven-node) on this repo!

@@ -32,10 +32,10 @@ async function main() {
       },
     },
   });
-  if (!sendEventResponse.ok) {
-    throw new Error(
-      `sendEvent failed with ${JSON.stringify(sendEventResponse.error)}`
-    );
+
+  if (sendEventResponse.ok) {
+    console.log(`The id of the event is ${sendEventResponse.body.id}`);
+  } else {
+    console.error("Failed to send event", sendEventResponse.error)
   }
-  console.log(`The id of the event is ${sendEventResponse.body.id}`);
 }
