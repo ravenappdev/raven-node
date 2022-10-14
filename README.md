@@ -1,8 +1,11 @@
-# Raven Node Library
+# Raven Node.JS library
 
-[![NPM version](https://img.shields.io/badge/npm-%40fern--api%2Fraven-blue)](https://www.npmjs.com/package/@fern-api/raven)
+![npm shield](https://img.shields.io/npm/v/@fern-api/raven)
 
-The Raven Node library provides access to the Raven API from JavaScript/TypeScript.
+
+
+The Raven Node.JS library provides access to the Raven API from JavaScript/TypeScript.
+
 
 ## Documentation
 
@@ -99,10 +102,6 @@ if (sendEventResponse.ok) {
 }
 ```
 
-## Beta Status
-
-This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning the package version to a specific version in your package.json file. This way, you can install the same version each time without breaking changes unless you are intentionally looking for the latest version.
-
-## Questions or Feedback?
+## Questions? Feedback?
 
 Feel free to [leave an issue](https://github.com/fern-api/raven-node) on this repo!
