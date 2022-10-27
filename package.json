@@ -1,6 +1,7 @@
 {
     "name": "@fern-api/raven",
-    "version": "0.0.8",
+    "version": "0.0.10",
+    "repository": "https://github.com/ravenappdev/raven-node",
     "main": "./index.js",
     "types": "./index.d.ts",
     "files": [

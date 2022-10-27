@@ -3,44 +3,44 @@
  */
 
 export interface Channel<RawValue extends Channel.RawValue = Channel.RawValue> {
-  toString: () => RawValue;
+  value: RawValue;
   visit: <Result>(visitor: Channel._Visitor<Result>) => Result;
 }
 
 const _Voice: Channel<"VOICE"> = {
-  toString: () => "VOICE",
+  value: "VOICE",
   visit: (visitor) => visitor.voice(),
 };
 const _Push: Channel<"PUSH"> = {
-  toString: () => "PUSH",
+  value: "PUSH",
   visit: (visitor) => visitor.push(),
 };
 const _Sms: Channel<"SMS"> = {
-  toString: () => "SMS",
+  value: "SMS",
   visit: (visitor) => visitor.sms(),
 };
 const _Email: Channel<"EMAIL"> = {
-  toString: () => "EMAIL",
+  value: "EMAIL",
   visit: (visitor) => visitor.email(),
 };
 const _Whatsapp: Channel<"WHATSAPP"> = {
-  toString: () => "WHATSAPP",
+  value: "WHATSAPP",
   visit: (visitor) => visitor.whatsapp(),
 };
 const _Webhook: Channel<"WEBHOOK"> = {
-  toString: () => "WEBHOOK",
+  value: "WEBHOOK",
   visit: (visitor) => visitor.webhook(),
 };
 const _Slack: Channel<"SLACK"> = {
-  toString: () => "SLACK",
+  value: "SLACK",
   visit: (visitor) => visitor.slack(),
 };
 const _InApp: Channel<"IN_APP"> = {
-  toString: () => "IN_APP",
+  value: "IN_APP",
   visit: (visitor) => visitor.inApp(),
 };
 const _Telegram: Channel<"TELEGRAM"> = {
-  toString: () => "TELEGRAM",
+  value: "TELEGRAM",
   visit: (visitor) => visitor.telegram(),
 };
 export const Channel = {
@@ -53,20 +53,47 @@ export const Channel = {
   Slack: _Slack,
   InApp: _InApp,
   Telegram: _Telegram,
+  _parse: (value: string): Channel => {
+    switch (value) {
+      case "VOICE": {
+        return _Voice;
+      }
+      case "PUSH": {
+        return _Push;
+      }
+      case "SMS": {
+        return _Sms;
+      }
+      case "EMAIL": {
+        return _Email;
+      }
+      case "WHATSAPP": {
+        return _Whatsapp;
+      }
+      case "WEBHOOK": {
+        return _Webhook;
+      }
+      case "SLACK": {
+        return _Slack;
+      }
+      case "IN_APP": {
+        return _InApp;
+      }
+      case "TELEGRAM": {
+        return _Telegram;
+      }
+      default: {
+        return {
+          value: value as Channel.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace Channel {
-  type RawValue =
-    | "VOICE"
-    | "PUSH"
-    | "SMS"
-    | "EMAIL"
-    | "WHATSAPP"
-    | "WEBHOOK"
-    | "SLACK"
-    | "IN_APP"
-    | "TELEGRAM"
-    | string;
+  type RawValue = "VOICE" | "PUSH" | "SMS" | "EMAIL" | "WHATSAPP" | "WEBHOOK" | "SLACK" | "IN_APP" | "TELEGRAM";
 
   interface _Visitor<Result> {
     voice: () => Result;

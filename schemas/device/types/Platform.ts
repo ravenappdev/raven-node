@@ -8,26 +8,8 @@ import * as core from "../../../core";
 export const Platform: core.schemas.Schema<Platform.Raw, RavenApi.device.Platform> = core.schemas
   .string()
   .transform<RavenApi.device.Platform>({
-    parse: (value) => {
-      switch (value) {
-        case "android": {
-          return RavenApi.device.Platform.Android;
-        }
-        case "web": {
-          return RavenApi.device.Platform.Web;
-        }
-        case "ios": {
-          return RavenApi.device.Platform.Ios;
-        }
-        default: {
-          return {
-            toString: () => value,
-            visit: (visitor) => visitor._other(value),
-          };
-        }
-      }
-    },
-    json: (value) => value.toString(),
+    parse: (value) => RavenApi.device.Platform._parse(value),
+    json: ({ value }) => value,
   });
 
 export declare namespace Platform {

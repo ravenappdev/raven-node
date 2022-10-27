@@ -40,17 +40,6 @@ export class Client implements Client {
       };
     }
 
-    if (response.error.reason === "status-code") {
-      switch ((response.error.body as schemas.device.add.Error.Raw)?.errorName) {
-        case "AppNotFoundError":
-        case "UserNotFoundError":
-          return {
-            ok: false,
-            error: schemas.device.add.Error.parse(response.error.body as schemas.device.add.Error.Raw),
-          };
-      }
-    }
-
     return {
       ok: false,
       error: {
@@ -78,18 +67,6 @@ export class Client implements Client {
         ok: true,
         body: schemas.device.Device.parse(response.body as schemas.device.Device.Raw),
       };
-    }
-
-    if (response.error.reason === "status-code") {
-      switch ((response.error.body as schemas.device.update.Error.Raw)?.errorName) {
-        case "AppNotFoundError":
-        case "UserNotFoundError":
-        case "DeviceNotFoundError":
-          return {
-            ok: false,
-            error: schemas.device.update.Error.parse(response.error.body as schemas.device.update.Error.Raw),
-          };
-      }
     }
 
     return {
@@ -122,20 +99,6 @@ export class Client implements Client {
       };
     }
 
-    if (response.error.reason === "status-code") {
-      switch ((response.error.body as schemas.device.deleteDevice.Error.Raw)?.errorName) {
-        case "AppNotFoundError":
-        case "UserNotFoundError":
-        case "DeviceNotFoundError":
-          return {
-            ok: false,
-            error: schemas.device.deleteDevice.Error.parse(
-              response.error.body as schemas.device.deleteDevice.Error.Raw
-            ),
-          };
-      }
-    }
-
     return {
       ok: false,
       error: {
@@ -162,17 +125,6 @@ export class Client implements Client {
         ok: true,
         body: schemas.device.Device.parse(response.body as schemas.device.Device.Raw),
       };
-    }
-
-    if (response.error.reason === "status-code") {
-      switch ((response.error.body as schemas.device.getDevice.Error.Raw)?.errorName) {
-        case "AppNotFoundError":
-        case "DeviceNotFoundError":
-          return {
-            ok: false,
-            error: schemas.device.getDevice.Error.parse(response.error.body as schemas.device.getDevice.Error.Raw),
-          };
-      }
     }
 
     return {

@@ -16,17 +16,9 @@ export interface Request {
 }
 
 export type Response = core.APIResponse<RavenApi.device.Device, RavenApi.device.getDevice.Error>;
-export type Error = Error.AppNotFoundError | Error.DeviceNotFoundError | Error._Unknown;
+export type Error = Error._Unknown;
 
 export declare namespace Error {
-  interface AppNotFoundError extends _Utils {
-    errorName: "AppNotFoundError";
-  }
-
-  interface DeviceNotFoundError extends _Utils {
-    errorName: "DeviceNotFoundError";
-  }
-
   interface _Unknown extends _Utils {
     errorName: void;
     content: core.Fetcher.Error;
@@ -37,36 +29,6 @@ export declare namespace Error {
   }
 
   interface _Visitor<Result> {
-    appNotFoundError: () => Result;
-    deviceNotFoundError: () => Result;
     _other: (value: core.Fetcher.Error) => Result;
   }
 }
-
-export const Error = {
-  appNotFoundError: (): Error.AppNotFoundError => {
-    const valueWithoutVisit: Omit<Error.AppNotFoundError, "_visit"> = {
-      errorName: "AppNotFoundError",
-    };
-    Object.defineProperty(valueWithoutVisit, "_visit", {
-      enumerable: false,
-      writable: true,
-    });
-    const castedValue = valueWithoutVisit as Error.AppNotFoundError;
-    castedValue._visit = (visitor) => visitor.appNotFoundError();
-    return castedValue;
-  },
-
-  deviceNotFoundError: (): Error.DeviceNotFoundError => {
-    const valueWithoutVisit: Omit<Error.DeviceNotFoundError, "_visit"> = {
-      errorName: "DeviceNotFoundError",
-    };
-    Object.defineProperty(valueWithoutVisit, "_visit", {
-      enumerable: false,
-      writable: true,
-    });
-    const castedValue = valueWithoutVisit as Error.DeviceNotFoundError;
-    castedValue._visit = (visitor) => visitor.deviceNotFoundError();
-    return castedValue;
-  },
-} as const;

@@ -3,30 +3,49 @@
  */
 
 export interface Platform<RawValue extends Platform.RawValue = Platform.RawValue> {
-  toString: () => RawValue;
+  value: RawValue;
   visit: <Result>(visitor: Platform._Visitor<Result>) => Result;
 }
 
 const _Android: Platform<"android"> = {
-  toString: () => "android",
+  value: "android",
   visit: (visitor) => visitor.android(),
 };
 const _Web: Platform<"web"> = {
-  toString: () => "web",
+  value: "web",
   visit: (visitor) => visitor.web(),
 };
 const _Ios: Platform<"ios"> = {
-  toString: () => "ios",
+  value: "ios",
   visit: (visitor) => visitor.ios(),
 };
 export const Platform = {
   Android: _Android,
   Web: _Web,
   Ios: _Ios,
+  _parse: (value: string): Platform => {
+    switch (value) {
+      case "android": {
+        return _Android;
+      }
+      case "web": {
+        return _Web;
+      }
+      case "ios": {
+        return _Ios;
+      }
+      default: {
+        return {
+          value: value as Platform.RawValue,
+          visit: (visitor) => visitor._other(value),
+        };
+      }
+    }
+  },
 } as const;
 
 export declare namespace Platform {
-  type RawValue = "android" | "web" | "ios" | string;
+  type RawValue = "android" | "web" | "ios";
 
   interface _Visitor<Result> {
     android: () => Result;

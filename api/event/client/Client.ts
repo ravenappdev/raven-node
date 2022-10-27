@@ -28,6 +28,7 @@ export class Client implements Client {
       method: "POST",
       headers: {
         Authorization: await core.Supplier.get(this.options.authorization),
+        "Idempotency-Key": request.idempotencyKey,
       },
       body: schemas.event.SendEventRequest.json(request._body),
     });
@@ -36,17 +37,6 @@ export class Client implements Client {
         ok: true,
         body: schemas.event.SendEventResponse.parse(response.body as schemas.event.SendEventResponse.Raw),
       };
-    }
-
-    if (response.error.reason === "status-code") {
-      switch ((response.error.body as schemas.event.send.Error.Raw)?.errorName) {
-        case "EventNotFoundError":
-        case "EventNotPublishedError":
-          return {
-            ok: false,
-            error: schemas.event.send.Error.parse(response.error.body as schemas.event.send.Error.Raw),
-          };
-      }
     }
 
     return {
@@ -65,6 +55,7 @@ export class Client implements Client {
       method: "POST",
       headers: {
         Authorization: await core.Supplier.get(this.options.authorization),
+        "Idempotency-Key": request.idempotencyKey,
       },
       body: schemas.event.BulkSendEventRequest.json(request._body),
     });
@@ -73,17 +64,6 @@ export class Client implements Client {
         ok: true,
         body: schemas.event.SendEventResponse.parse(response.body as schemas.event.SendEventResponse.Raw),
       };
-    }
-
-    if (response.error.reason === "status-code") {
-      switch ((response.error.body as schemas.event.sendBulk.Error.Raw)?.errorName) {
-        case "EventNotFoundError":
-        case "EventNotPublishedError":
-          return {
-            ok: false,
-            error: schemas.event.sendBulk.Error.parse(response.error.body as schemas.event.sendBulk.Error.Raw),
-          };
-      }
     }
 
     return {

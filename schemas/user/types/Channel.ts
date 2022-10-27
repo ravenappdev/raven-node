@@ -8,44 +8,8 @@ import * as core from "../../../core";
 export const Channel: core.schemas.Schema<Channel.Raw, RavenApi.user.Channel> = core.schemas
   .string()
   .transform<RavenApi.user.Channel>({
-    parse: (value) => {
-      switch (value) {
-        case "VOICE": {
-          return RavenApi.user.Channel.Voice;
-        }
-        case "PUSH": {
-          return RavenApi.user.Channel.Push;
-        }
-        case "SMS": {
-          return RavenApi.user.Channel.Sms;
-        }
-        case "EMAIL": {
-          return RavenApi.user.Channel.Email;
-        }
-        case "WHATSAPP": {
-          return RavenApi.user.Channel.Whatsapp;
-        }
-        case "WEBHOOK": {
-          return RavenApi.user.Channel.Webhook;
-        }
-        case "SLACK": {
-          return RavenApi.user.Channel.Slack;
-        }
-        case "IN_APP": {
-          return RavenApi.user.Channel.InApp;
-        }
-        case "TELEGRAM": {
-          return RavenApi.user.Channel.Telegram;
-        }
-        default: {
-          return {
-            toString: () => value,
-            visit: (visitor) => visitor._other(value),
-          };
-        }
-      }
-    },
-    json: (value) => value.toString(),
+    parse: (value) => RavenApi.user.Channel._parse(value),
+    json: ({ value }) => value,
   });
 
 export declare namespace Channel {

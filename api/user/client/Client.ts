@@ -40,18 +40,6 @@ export class Client implements Client {
       };
     }
 
-    if (response.error.reason === "status-code") {
-      switch ((response.error.body as schemas.user.createOrUpdate.Error.Raw)?.errorName) {
-        case "AppNotFoundError":
-          return {
-            ok: false,
-            error: schemas.user.createOrUpdate.Error.parse(
-              response.error.body as schemas.user.createOrUpdate.Error.Raw
-            ),
-          };
-      }
-    }
-
     return {
       ok: false,
       error: {
@@ -75,17 +63,6 @@ export class Client implements Client {
         ok: true,
         body: schemas.user.RavenUser.parse(response.body as schemas.user.RavenUser.Raw),
       };
-    }
-
-    if (response.error.reason === "status-code") {
-      switch ((response.error.body as schemas.user.get.Error.Raw)?.errorName) {
-        case "AppNotFoundError":
-        case "UserNotFoundError":
-          return {
-            ok: false,
-            error: schemas.user.get.Error.parse(response.error.body as schemas.user.get.Error.Raw),
-          };
-      }
     }
 
     return {
