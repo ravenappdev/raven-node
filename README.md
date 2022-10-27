@@ -1,4 +1,4 @@
-# Raven Node.JS library
+# Raven Node library
 
 [![npm shield](https://img.shields.io/npm/v/@fern-api/raven)](https://www.npmjs.com/package/@fern-api/raven)
 
