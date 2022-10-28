@@ -5,9 +5,9 @@ __metadata:
   version: 6
   cacheKey: 8
 
-"@ravenappdev/raven@workspace:.":
+"@ravenapp/raven@workspace:.":
   version: 0.0.0-use.local
-  resolution: "@ravenappdev/raven@workspace:."
+  resolution: "@ravenapp/raven@workspace:."
   dependencies:
     "@types/node": 17.0.33
     "@types/url-join": 4.0.1

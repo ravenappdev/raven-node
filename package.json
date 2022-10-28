@@ -1,6 +1,6 @@
 {
-    "name": "@ravenappdev/raven",
-    "version": "0.0.20",
+    "name": "@ravenapp/raven",
+    "version": "0.0.21",
     "repository": "https://github.com/ravenappdev/raven-node",
     "files": [
         "core",
