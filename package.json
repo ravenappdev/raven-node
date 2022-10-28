@@ -1,6 +1,6 @@
 {
-    "name": "@fern-api/raven",
-    "version": "0.0.16",
+    "name": "@ravenappdev/raven",
+    "version": "0.0.20",
     "repository": "https://github.com/ravenappdev/raven-node",
     "files": [
         "core",
