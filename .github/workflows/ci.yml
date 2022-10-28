@@ -7,10 +7,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup node
+      - name: Set up node
         uses: actions/setup-node@v3
 
       - name: Compile
@@ -22,16 +22,19 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v3
 
-      - name: Setup node
+      - name: Set up node
         uses: actions/setup-node@v3
 
-      - name: Install yarn
+      - name: Install dependencies
         run: yarn install
 
-      - name: Publish to NPM
+      - name: Build
+        run: yarn build
+
+      - name: Publish to npm
         run: |
           npm config set //registry.npmjs.org/:_authToken ${NPM_TOKEN}
           npm publish --ignore-scripts
