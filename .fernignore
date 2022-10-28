@@ -1,7 +1,5 @@
 # Specify files that shouldn't be modified by Fern
 
-.github
-.sample-app
 .vscode
 .yarn
 README.md
