@@ -1,26 +1,31 @@
 {
     "name": "@fern-api/raven",
-    "version": "0.0.10",
+    "version": "0.0.11",
     "repository": "https://github.com/ravenappdev/raven-node",
+    "files": [
+        "core",
+        "resources",
+        "serialization",
+        "client",
+        "*.{js,js.map,d.ts}"
+    ],
     "main": "./index.js",
     "types": "./index.d.ts",
-    "files": [
-        "/api/**/*.{js,js.map,d.ts}",
-        "/schemas/**/*.{js,js.map,d.ts}",
-        "/core/**/*.{js,js.map,d.ts}",
-        "/index.{js,js.map,d.ts}"
-    ],
+    "exports": {
+        ".": {
+            "require": "./index.js",
+            "import": "./index.js",
+            "types": "./index.d.ts"
+        }
+    },
     "scripts": {
-        "format": "prettier --write --print-width 120 '**/*.ts'",
-        "build": "esbuild $(find . -name '*.ts' -not -path './node_modules/*') --format=cjs --sourcemap --outdir=. && tsc"
+        "format": "prettier --write --print-width 120 'src/**/*.ts'",
+        "build": "esbuild $(find src -name '*.ts') --format=cjs --sourcemap --outdir=. && tsc"
     },
     "dependencies": {
         "@types/url-join": "4.0.1",
         "axios": "^0.27.2",
         "url-join": "4.0.1"
-    },
-    "peerDependencies": {
-        "axios": "*"
     },
     "devDependencies": {
         "@types/node": "17.0.33",
