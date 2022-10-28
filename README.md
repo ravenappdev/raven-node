@@ -8,6 +8,10 @@ The Raven Node.JS library provides access to the Raven API from JavaScript/TypeS
 
 API documentation is available at https://docs.ravenapp.dev/.
 
+## Sample app
+
+Check out the sample app in your browser [here](https://stackblitz.com/edit/raven-node-sample-app?file=app.ts&view=editor) using StackBlitz.
+
 ## Usage
 
 ```typescript
@@ -32,21 +36,6 @@ if (createUserResponse.ok) {
 } else {
   console.error("Failed to create user", createUserResponse.error);
 }
-```
-
-## Sample app
-
-Check out the [sample app](.sample-app/app.ts) which consumes this SDK!
-
-```bash
-export RAVEN_TOKEN=...
-export RAVEN_APP_ID=...
-
-yarn install
-
-cd .sample-app
-yarn install
-yarn start
 ```
 
 ## Examples
