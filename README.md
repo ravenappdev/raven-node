@@ -4,7 +4,6 @@
 
 The Raven Node.JS library provides access to the Raven API from JavaScript/TypeScript.
 
-
 ## Documentation
 
 API documentation is available at https://docs.ravenapp.dev/.
