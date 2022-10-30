@@ -10,7 +10,7 @@ API documentation is available at https://docs.ravenapp.dev/.
 
 ## Sample app
 
-Check out the sample app in your browser [here](https://stackblitz.com/edit/raven-node-sample-app?file=app.ts&view=editor) using StackBlitz.
+Check out the sample app in your browser [here](https://stackblitz.com/edit/raven-typescript-example?file=app.ts&view=editor) using StackBlitz.
 
 ## Usage
 
