@@ -33,12 +33,16 @@ export class RavenApiClient {
     return (this.#event ??= new EventClient(this.options));
   }
 
-  public async send(request: RavenApi.event.send.Request): Promise<RavenApi.event.send.Response> {
+  public async send(
+    request: RavenApi.event.send.Request
+  ): Promise<RavenApi.event.send.Response> {
     return this.event.send(request);
   }
 
-  public async sendBulk(request: RavenApi.event.sendBulk.Request): Promise<RavenApi.event.sendBulk.Response> {
-        return this.event.sendBulk(request);
+  public async sendBulk(
+    request: RavenApi.event.sendBulk.Request
+  ): Promise<RavenApi.event.sendBulk.Response> {
+    return this.event.sendBulk(request);
   }
 
   #user: UserClient | undefined;
