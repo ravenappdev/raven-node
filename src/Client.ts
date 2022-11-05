@@ -7,6 +7,7 @@ import * as core from "./core";
 import { Client as DeviceClient } from "./resources/device/client/Client";
 import { Client as EventClient } from "./resources/event/client/Client";
 import { Client as UserClient } from "./resources/user/client/Client";
+import { RavenApi } from ".";
 
 export declare namespace RavenApiClient {
   interface Options {
@@ -30,6 +31,18 @@ export class RavenApiClient {
 
   public get event(): EventClient {
     return (this.#event ??= new EventClient(this.options));
+  }
+
+  public async send(
+    request: RavenApi.event.send.Request
+  ): Promise<RavenApi.event.send.Response> {
+    return this.event.send(request);
+  }
+
+  public async sendBulk(
+    request: RavenApi.event.sendBulk.Request
+  ): Promise<RavenApi.event.sendBulk.Response> {
+    return this.event.sendBulk(request);
   }
 
   #user: UserClient | undefined;
