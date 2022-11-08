@@ -15,6 +15,14 @@ Check out the sample app in your browser [here](https://stackblitz.com/edit/rave
 ## Usage
 
 ```typescript
+
+import { RavenApi } from "raven";
+
+const raven = new RavenApi.Client({
+  _origin: "https://api.ravenapp.dev",
+  authorization: `AuthKey ${api_key}`,
+});
+
 const sendEventResponse = await raven.send({
   appId: ravenAppId,
   _body: {
@@ -45,13 +53,6 @@ Below are a few examples of how to use the SDK to hit different endpoints. Check
 ### Create User
 
 ```typescript
-import { RavenApi } from "raven";
-
-const raven = new RavenApi.Client({
-  _origin: "https://api.ravenapp.dev",
-  authorization: `AuthKey ${ravenToken}`,
-});
-
 const createUserResponse = await raven.user.createOrUpdate({
   appId: ravenAppId,
   _body: {
