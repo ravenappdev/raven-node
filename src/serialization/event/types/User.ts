@@ -7,10 +7,7 @@ import * as core from "../../../core";
 import * as serializers from "../..";
 
 export const User: core.schemas.ObjectSchema<User.Raw, RavenApi.event.User> = core.schemas.object({
-  userId: core.schemas.property(
-    "user_id",
-    core.schemas.lazy(() => serializers.ids.UserId)
-  ),
+  userId: core.schemas.property("user_id", core.schemas.lazy(() => serializers.ids.UserId).optional()),
   email: core.schemas.string().optional(),
   mobile: core.schemas.string().optional(),
   whatsappMobile: core.schemas.property("whatsapp_mobile", core.schemas.string().optional()),
@@ -20,7 +17,7 @@ export const User: core.schemas.ObjectSchema<User.Raw, RavenApi.event.User> = co
 
 export declare namespace User {
   interface Raw {
-    user_id: serializers.ids.UserId.Raw;
+    user_id?: serializers.ids.UserId.Raw | null;
     email?: string | null;
     mobile?: string | null;
     whatsapp_mobile?: string | null;

@@ -10,7 +10,7 @@ export interface User {
    * This is  your own user identifier which you have used to create user on Raven
    *
    */
-  userId: RavenApi.ids.UserId;
+  userId?: RavenApi.ids.UserId;
   email?: string;
   /** mobile with country code prefix (e.g +91) */
   mobile?: string;
