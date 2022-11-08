@@ -15,6 +15,36 @@ Check out the sample app in your browser [here](https://stackblitz.com/edit/rave
 ## Usage
 
 ```typescript
+const sendEventResponse = await raven.send({
+  appId: ravenAppId,
+  _body: {
+    event: "sample_event_1",
+    user: {
+      mobile: "+919876543210",
+      email: "x@ravenapp.dev",
+      whatsapp_mobile: "+919876543210", // if empty, `mobile` is considered for whatsapp
+    },
+    data: {
+      name: "John Doe",
+      date: "01 December 2020",
+    },
+  },
+});
+
+if (sendEventResponse.ok) {
+  console.log(`The id of the event is ${sendEventResponse.body.id}`);
+} else {
+  console.error("Failed to send event", sendEventResponse.error);
+}
+```
+
+## Examples
+
+Below are a few examples of how to use the SDK to hit different endpoints. Check out our [API Reference](https://docs.ravenapp.dev/) to see all of our endpoints.
+
+### Create User
+
+```typescript
 import { RavenApi } from "raven";
 
 const raven = new RavenApi.Client({
@@ -38,10 +68,6 @@ if (createUserResponse.ok) {
 }
 ```
 
-## Examples
-
-Below are a few examples of how to use the SDK to hit different endpoints. Check out our [API Reference](https://docs.ravenapp.dev/) to see all of our endpoints.
-
 ### Add device
 
 ```typescript
@@ -59,32 +85,6 @@ if (addDeviceResponse.ok) {
   console.log(addDeviceResponse.body);
 } else {
   console.error("Failed to add device", addDeviceResponse.error);
-}
-```
-
-### Send event
-
-```typescript
-const sendEventResponse = await raven.event.send({
-  appId: ravenAppId,
-  _body: {
-    event: "sample_event_1",
-    user: {
-      mobile: "+919876543210",
-      email: "x@ravenapp.dev",
-      whatsapp_mobile: "+919876543210", // if empty, `mobile` is considered for whatsapp
-    },
-    data: {
-      name: "John Doe",
-      date: "01 December 2020",
-    },
-  },
-});
-
-if (sendEventResponse.ok) {
-  console.log(`The id of the event is ${sendEventResponse.body.id}`);
-} else {
-  console.error("Failed to send event", sendEventResponse.error);
 }
 ```
 
