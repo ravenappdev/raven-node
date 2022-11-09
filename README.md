@@ -19,7 +19,6 @@ Check out the sample app in your browser [here](https://stackblitz.com/edit/rave
 import { RavenApi } from "raven";
 
 const raven = new RavenApi.Client({
-  _origin: "https://api.ravenapp.dev",
   authorization: `AuthKey ${api_key}`,
 });
 
