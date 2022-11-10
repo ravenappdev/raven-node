@@ -1,7 +1,6 @@
 export * from "./CreateUserRequest";
 export * from "./RavenUser";
 export * from "./SlackProfile";
-export * from "./InAppProfile";
 export * from "./TelegramProfile";
 export * from "./UserPreferences";
 export * from "./Channel";

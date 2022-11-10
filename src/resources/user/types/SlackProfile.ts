@@ -4,6 +4,6 @@
 
 export interface SlackProfile {
   accessToken: string;
-  email: string;
-  channelId: string;
+  email?: string;
+  channelId?: string;
 }

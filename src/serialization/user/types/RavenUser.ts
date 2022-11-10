@@ -17,7 +17,6 @@ export const RavenUser: core.schemas.ObjectSchema<RavenUser.Raw, RavenApi.user.R
   email: core.schemas.string().optional(),
   whatsappMobile: core.schemas.property("whatsapp_mobile", core.schemas.string().optional()),
   slack: core.schemas.lazyObject(() => serializers.user.SlackProfile).optional(),
-  inApp: core.schemas.property("in_app", core.schemas.lazyObject(() => serializers.user.InAppProfile).optional()),
   telegram: core.schemas.lazyObject(() => serializers.user.TelegramProfile).optional(),
   fcmTokens: core.schemas.property("fcm_tokens", core.schemas.list(core.schemas.string()).optional()),
   onesignalPlayerIds: core.schemas.property(
@@ -38,7 +37,6 @@ export declare namespace RavenUser {
     email?: string | null;
     whatsapp_mobile?: string | null;
     slack?: serializers.user.SlackProfile.Raw | null;
-    in_app?: serializers.user.InAppProfile.Raw | null;
     telegram?: serializers.user.TelegramProfile.Raw | null;
     fcm_tokens?: string[] | null;
     onesignal_player_ids?: string[] | null;

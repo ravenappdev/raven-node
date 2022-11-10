@@ -22,7 +22,6 @@ export const User: core.schemas.ObjectSchema<User.Raw, RavenApi.event.User> = co
   telegram: core.schemas.lazyObject(() => serializers.user.TelegramProfile).optional(),
   fcmTopic: core.schemas.property("fcm_topic", core.schemas.string().optional()),
   fcmDeviceGroup: core.schemas.property("fcm_device_group", core.schemas.string().optional()),
-  inApp: core.schemas.property("in_app", core.schemas.lazyObject(() => serializers.user.InAppProfile).optional()),
 });
 
 export declare namespace User {
@@ -39,6 +38,5 @@ export declare namespace User {
     telegram?: serializers.user.TelegramProfile.Raw | null;
     fcm_topic?: string | null;
     fcm_device_group?: string | null;
-    in_app?: serializers.user.InAppProfile.Raw | null;
   }
 }

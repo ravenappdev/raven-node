@@ -18,7 +18,6 @@ export interface RavenUser {
   /** Include this only when user's whatsapp mobile is different than primary mobile */
   whatsappMobile?: string;
   slack?: RavenApi.user.SlackProfile;
-  inApp?: RavenApi.user.InAppProfile;
   telegram?: RavenApi.user.TelegramProfile;
   fcmTokens?: string[];
   onesignalPlayerIds?: string[];

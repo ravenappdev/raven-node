@@ -30,5 +30,4 @@ export interface User {
   telegram?: RavenApi.user.TelegramProfile;
   fcmTopic?: string;
   fcmDeviceGroup?: string;
-  inApp?: RavenApi.user.InAppProfile;
 }
