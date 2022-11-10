@@ -22,6 +22,13 @@ export interface User {
   whatsappMobile?: string;
   /** [OneSignal external user IDs](https://documentation.onesignal.com/docs/external-user-ids) */
   onesignalExternalId?: string;
+  onesignalPlayerIds?: string[];
   /** List of fcm tokens.  eg. ["<fcmtoken1", "<fcmtoken2>"] */
   fcmTokens?: string[];
+  iosTokens?: string[];
+  slack?: RavenApi.user.SlackProfile;
+  telegram?: RavenApi.user.TelegramProfile;
+  fcmTopic?: string;
+  fcmDeviceGroup?: string;
+  inApp?: RavenApi.user.InAppProfile;
 }

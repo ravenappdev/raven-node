@@ -16,8 +16,6 @@ export const RavenUser: core.schemas.ObjectSchema<RavenUser.Raw, RavenApi.user.R
   mobile: core.schemas.string().optional(),
   email: core.schemas.string().optional(),
   whatsappMobile: core.schemas.property("whatsapp_mobile", core.schemas.string().optional()),
-  fcmTopic: core.schemas.property("fcm_topic", core.schemas.list(core.schemas.string()).optional()),
-  fcmDeviceGroup: core.schemas.property("fcm_device_group", core.schemas.list(core.schemas.string()).optional()),
   slack: core.schemas.lazyObject(() => serializers.user.SlackProfile).optional(),
   inApp: core.schemas.property("in_app", core.schemas.lazyObject(() => serializers.user.InAppProfile).optional()),
   telegram: core.schemas.lazyObject(() => serializers.user.TelegramProfile).optional(),
@@ -27,15 +25,6 @@ export const RavenUser: core.schemas.ObjectSchema<RavenUser.Raw, RavenApi.user.R
     core.schemas.list(core.schemas.string()).optional()
   ),
   iosTokens: core.schemas.property("ios_tokens", core.schemas.list(core.schemas.string()).optional()),
-  availableChannels: core.schemas.property(
-    "available_channels",
-    core.schemas.list(core.schemas.lazy(() => serializers.user.Channel)).optional()
-  ),
-  devices: core.schemas.list(core.schemas.lazyObject(() => serializers.device.Device)),
-  userPreferences: core.schemas.property(
-    "user_preferences",
-    core.schemas.lazyObject(() => serializers.user.UserPreferences).optional()
-  ),
   createdAt: core.schemas.property("created_at", core.schemas.number().optional()),
   updatedAt: core.schemas.property("updated_at", core.schemas.number().optional()),
 });
@@ -48,17 +37,12 @@ export declare namespace RavenUser {
     mobile?: string | null;
     email?: string | null;
     whatsapp_mobile?: string | null;
-    fcm_topic?: string[] | null;
-    fcm_device_group?: string[] | null;
     slack?: serializers.user.SlackProfile.Raw | null;
     in_app?: serializers.user.InAppProfile.Raw | null;
     telegram?: serializers.user.TelegramProfile.Raw | null;
     fcm_tokens?: string[] | null;
     onesignal_player_ids?: string[] | null;
     ios_tokens?: string[] | null;
-    available_channels?: serializers.user.Channel.Raw[] | null;
-    devices: serializers.device.Device.Raw[];
-    user_preferences?: serializers.user.UserPreferences.Raw | null;
     created_at?: number | null;
     updated_at?: number | null;
   }

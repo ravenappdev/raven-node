@@ -17,17 +17,12 @@ export interface RavenUser {
   email?: string;
   /** Include this only when user's whatsapp mobile is different than primary mobile */
   whatsappMobile?: string;
-  fcmTopic?: string[];
-  fcmDeviceGroup?: string[];
   slack?: RavenApi.user.SlackProfile;
   inApp?: RavenApi.user.InAppProfile;
   telegram?: RavenApi.user.TelegramProfile;
   fcmTokens?: string[];
   onesignalPlayerIds?: string[];
   iosTokens?: string[];
-  availableChannels?: RavenApi.user.Channel[];
-  devices: RavenApi.device.Device[];
-  userPreferences?: RavenApi.user.UserPreferences;
   createdAt?: number;
   updatedAt?: number;
 }
