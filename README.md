@@ -8,11 +8,9 @@ The Raven Node.js library provides access to the Raven API from JavaScript/TypeS
 
 API documentation is available at https://docs.ravenapp.dev/.
 
-## Sample app
-
-Check out the sample app in your browser [here](https://stackblitz.com/edit/raven-typescript-example?file=app.ts&view=editor) using StackBlitz.
-
 ## Usage
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/raven-typescript-example?file=app.ts&view=editor)
 
 ```typescript
 
