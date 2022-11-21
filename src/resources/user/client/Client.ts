@@ -4,7 +4,7 @@
 
 import * as environments from "../../../environments";
 import * as core from "../../../core";
-import { RavenApi } from "../../..";
+import { RavenApi } from "@ravenapp/raven";
 import urlJoin from "url-join";
 import * as serializers from "../../../serialization";
 
@@ -29,12 +29,12 @@ export class Client {
       headers: {
         Authorization: await core.Supplier.get(this.options.auth?.authorization),
       },
-      body: serializers.user.CreateUserRequest.json(request._body),
+      body: await serializers.CreateUserRequest.json(request._body),
     });
     if (response.ok) {
       return {
         ok: true,
-        body: serializers.user.RavenUser.parse(response.body as serializers.user.RavenUser.Raw),
+        body: await serializers.RavenUser.parse(response.body as serializers.RavenUser.Raw),
       };
     }
 
@@ -62,7 +62,7 @@ export class Client {
     if (response.ok) {
       return {
         ok: true,
-        body: serializers.user.RavenUser.parse(response.body as serializers.user.RavenUser.Raw),
+        body: await serializers.RavenUser.parse(response.body as serializers.RavenUser.Raw),
       };
     }
 

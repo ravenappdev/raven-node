@@ -4,7 +4,7 @@
 
 import * as environments from "../../../environments";
 import * as core from "../../../core";
-import { RavenApi } from "../../..";
+import { RavenApi } from "@ravenapp/raven";
 import urlJoin from "url-join";
 import * as serializers from "../../../serialization";
 
@@ -30,12 +30,12 @@ export class Client {
       headers: {
         Authorization: await core.Supplier.get(this.options.auth?.authorization),
       },
-      body: serializers.device.Device.json(request._body),
+      body: await serializers.Device.json(request._body),
     });
     if (response.ok) {
       return {
         ok: true,
-        body: serializers.device.Device.parse(response.body as serializers.device.Device.Raw),
+        body: await serializers.Device.parse(response.body as serializers.Device.Raw),
       };
     }
 
@@ -59,12 +59,12 @@ export class Client {
       headers: {
         Authorization: await core.Supplier.get(this.options.auth?.authorization),
       },
-      body: serializers.device.Device.json(request._body),
+      body: await serializers.Device.json(request._body),
     });
     if (response.ok) {
       return {
         ok: true,
-        body: serializers.device.Device.parse(response.body as serializers.device.Device.Raw),
+        body: await serializers.Device.parse(response.body as serializers.Device.Raw),
       };
     }
 
@@ -120,7 +120,7 @@ export class Client {
     if (response.ok) {
       return {
         ok: true,
-        body: serializers.device.Device.parse(response.body as serializers.device.Device.Raw),
+        body: await serializers.Device.parse(response.body as serializers.Device.Raw),
       };
     }
 

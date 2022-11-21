@@ -4,7 +4,7 @@
 
 import * as environments from "../../../environments";
 import * as core from "../../../core";
-import { RavenApi } from "../../..";
+import { RavenApi } from "@ravenapp/raven";
 import urlJoin from "url-join";
 import * as serializers from "../../../serialization";
 
@@ -28,12 +28,12 @@ export class Client {
         Authorization: await core.Supplier.get(this.options.auth?.authorization),
         "Idempotency-Key": request.idempotencyKey,
       },
-      body: serializers.event.SendEventRequest.json(request._body),
+      body: await serializers.SendEventRequest.json(request._body),
     });
     if (response.ok) {
       return {
         ok: true,
-        body: serializers.event.SendEventResponse.parse(response.body as serializers.event.SendEventResponse.Raw),
+        body: await serializers.SendEventResponse.parse(response.body as serializers.SendEventResponse.Raw),
       };
     }
 
@@ -58,12 +58,12 @@ export class Client {
         Authorization: await core.Supplier.get(this.options.auth?.authorization),
         "Idempotency-Key": request.idempotencyKey,
       },
-      body: serializers.event.BulkSendEventRequest.json(request._body),
+      body: await serializers.BulkSendEventRequest.json(request._body),
     });
     if (response.ok) {
       return {
         ok: true,
-        body: serializers.event.SendEventResponse.parse(response.body as serializers.event.SendEventResponse.Raw),
+        body: await serializers.SendEventResponse.parse(response.body as serializers.SendEventResponse.Raw),
       };
     }
 
