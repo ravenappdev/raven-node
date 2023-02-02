@@ -10,80 +10,23 @@ API documentation is available at https://docs.ravenapp.dev/.
 
 ## Usage
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/raven-typescript-example?file=app.ts&view=editor)
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/edit/raven-typescript-example-yrzyda?file=app.ts&view=editor)
 
 ```typescript
+import { RavenApiClient } from '@ravenapp/raven';
 
-import { RavenApi } from "raven";
-
-const raven = new RavenApi.Client({
-  authorization: `AuthKey ${api_key}`,
+const raven = new RavenApiClient({
+  authorization: `AuthKey YOUR_AUTH_KEY`,
 });
 
-const sendEventResponse = await raven.send({
-  appId: ravenAppId,
-  _body: {
-    event: "sample_event_1",
-    user: {
-      mobile: "+919876543210",
-      email: "x@ravenapp.dev",
-      whatsapp_mobile: "+919876543210", // if empty, `mobile` is considered for whatsapp
-    },
-    data: {
-      name: "John Doe",
-      date: "01 December 2020",
-    },
+const response = await raven.send('YOUR_APP_ID', {
+  event: 'Send text message.',
+  data: {
+    key: 'value',
   },
 });
 
-if (sendEventResponse.ok) {
-  console.log(`The id of the event is ${sendEventResponse.body.id}`);
-} else {
-  console.error("Failed to send event", sendEventResponse.error);
-}
-```
-
-## Examples
-
-Below are a few examples of how to use the SDK to hit different endpoints. Check out our [API Reference](https://docs.ravenapp.dev/) to see all of our endpoints.
-
-### Create User
-
-```typescript
-const createUserResponse = await raven.user.createOrUpdate({
-  appId: ravenAppId,
-  _body: {
-    userId: "test",
-    mobile: "9876543210",
-    email: "x@ravenapp.dev",
-  },
-});
-
-if (createUserResponse.ok) {
-  console.log(createUserResponse.body);
-} else {
-  console.error("Failed to create user", createUserResponse.error);
-}
-```
-
-### Add device
-
-```typescript
-const addDeviceResponse = await raven.device.add({
-  appId: ravenAppId,
-  userId: createUserResponse.body.userId,
-  _body: {
-    fcmToken:
-      "qweKu7bdTZumJpzxUqqpxe:APA91bE9FSScPK_kENPpBAj0URYDo4z0tE6aOrBtpgaA1I1OC7GBes1lR71EWRhavLGMzDMKPPLkUoqtvPHzCgq-8ObU4AOJjbPdpkyRWqc8mqrUV2EkvsziLZvFccwtyI7-lQQhSJDe",
-    platform: RavenApi.Platform.Android,
-  },
-});
-
-if (addDeviceResponse.ok) {
-  console.log(addDeviceResponse.body);
-} else {
-  console.error("Failed to add device", addDeviceResponse.error);
-}
+console.log('Received response from Raven', response);
 ```
 
 ## Beta status
