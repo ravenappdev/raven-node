@@ -1,2 +1,2 @@
-export * as schemas from "./schemas";
+export * as serialization from "./schemas";
 export * from "./fetcher";

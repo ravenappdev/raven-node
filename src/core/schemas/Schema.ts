@@ -6,18 +6,18 @@ export type inferRaw<S extends Schema> = S extends Schema<infer Raw, any> ? Raw 
 export type inferParsed<S extends Schema> = S extends Schema<any, infer Parsed> ? Parsed : never;
 
 export interface BaseSchema<Raw, Parsed> {
-  parse: (raw: Raw, opts?: SchemaOptions) => Parsed | Promise<Parsed>;
-  json: (parsed: Parsed, opts?: SchemaOptions) => Raw | Promise<Raw>;
+    parse: (raw: Raw, opts?: SchemaOptions) => Parsed | Promise<Parsed>;
+    json: (parsed: Parsed, opts?: SchemaOptions) => Raw | Promise<Raw>;
 }
 
 export interface SchemaOptions {
-  /**
-   * @default false
-   */
-  skipUnknownKeysOnParse?: boolean;
+    /**
+     * @default false
+     */
+    skipUnknownKeysOnParse?: boolean;
 
-  /**
-   * @default false
-   */
-  includeUnknownKeysOnJson?: boolean;
+    /**
+     * @default false
+     */
+    includeUnknownKeysOnJson?: boolean;
 }
