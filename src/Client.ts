@@ -14,7 +14,7 @@ import { Client as UserClient } from "./api/resources/user/client/Client";
 export declare namespace RavenApiClient {
     interface Options {
         environment?: environments.RavenApiEnvironment | string;
-        authorization?: core.Supplier<string>;
+        authKey?: core.Supplier<string>;
     }
 }
 
@@ -35,7 +35,7 @@ export class RavenApiClient {
             method: "POST",
             headers: {
                 "Idempotency-Key": idempotencyKey,
-                Authorization: await core.Supplier.get(this.options.authorization),
+                Authorization: await core.Supplier.get(this.options.authKey),
             },
             body: await serializers.SendEventRequest.json(_body),
         });
@@ -87,7 +87,7 @@ export class RavenApiClient {
             method: "POST",
             headers: {
                 "Idempotency-Key": idempotencyKey,
-                Authorization: await core.Supplier.get(this.options.authorization),
+                Authorization: await core.Supplier.get(this.options.authKey),
             },
             body: await serializers.BulkSendEventRequest.json(_body),
         });

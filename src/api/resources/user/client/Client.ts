@@ -12,7 +12,7 @@ import * as errors from "../../../../errors";
 export declare namespace Client {
     interface Options {
         environment?: environments.RavenApiEnvironment | string;
-        authorization?: core.Supplier<string>;
+        authKey?: core.Supplier<string>;
     }
 }
 
@@ -30,7 +30,7 @@ export class Client {
             url: urlJoin(this.options.environment ?? environments.RavenApiEnvironment.Prod, `/v1/apps/${appId}/users`),
             method: "POST",
             headers: {
-                Authorization: await core.Supplier.get(this.options.authorization),
+                Authorization: await core.Supplier.get(this.options.authKey),
             },
             body: await serializers.CreateUserRequest.json(request),
         });
@@ -71,7 +71,7 @@ export class Client {
             ),
             method: "GET",
             headers: {
-                Authorization: await core.Supplier.get(this.options.authorization),
+                Authorization: await core.Supplier.get(this.options.authKey),
             },
         });
         if (_response.ok) {
